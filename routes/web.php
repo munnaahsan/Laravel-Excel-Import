@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/import', 'ProductController@index');
+Route::post('/export', 'ProductController@postImport');
 
-Route::prefix('api')->group(function () {
-    Route::get('getContact', 'ContactController@getcontacts');
-});
+
+// Route::prefix('api')->group(function () {
+//     Route::get('getContact', 'ContactController@getcontacts');
+// });

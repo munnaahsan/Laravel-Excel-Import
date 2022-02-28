@@ -88,8 +88,6 @@
                 <div id="app">
                   @yield('content')
                 </div>
-
-               
             </div>
         </div>
 
