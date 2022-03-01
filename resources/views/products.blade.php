@@ -24,20 +24,31 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-6 mt-5">
+            @if(session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+            @if(isset($errors) && $errors->any())
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                </div>
+            @endif
             <form
-                action="{{ url('/export') }}"
+                action="{{ url('/users/import') }}"
                 enctype="multipart/form-data"
                 method="POST">
                 @csrf
                 <label for="formFile" class="form-label">Choose file</label>
-                <input 
-                    class="form-control" 
-                    type="file" 
+                <input
+                    class="form-control"
+                    type="file"
                     id="file"
-                    name="file"
-                    accept=".xls">
+                    name="file">
 
-                <div class="col-auto">
+                <div class="col-auto mt-3">
                     <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
             </form>
@@ -54,23 +65,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($products as $row)
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>{{$row->parent_category}}</td>
-                            <td>{{$row->category}}</td>
-                            <td>{{$row->sub_category}}</td>
-                            <td>{{$row->part_name}}</td>
-                            <td>{{$row->part_no}}</td>
-                        </tr>
-                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 </body>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 </html>

@@ -24,3 +24,7 @@ Route::post('/export', 'ProductController@postImport');
 // Route::prefix('api')->group(function () {
 //     Route::get('getContact', 'ContactController@getcontacts');
 // });
+
+
+Route::get('/users/import', 'ProductImportController@show');
+Route::post('/users/import', 'ProductImportController@store');
